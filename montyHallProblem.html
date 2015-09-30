@@ -15,7 +15,7 @@
 				doors[index] = true;
 				//player chooses random door
 				var firstTarget = Math.round(Math.random()*(doors.length-1));
-				//Presentor opens a door witch doesn't have a price
+				//Presentor opens a door which doesn't have a price
 				var opened = bustDoor(firstTarget,doors);
 				//player changes his choice and sees if he has won
 				for (var i = 0; i < doors.length ; i++) {
