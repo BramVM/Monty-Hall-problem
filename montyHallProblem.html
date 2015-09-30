@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<script>
+			var numberOftries = 100000;
+			var succeses = 0;
+			for (j=0; j<numberOftries;j++){
+				if (gameWin()) succeses ++;
+			};
+			document.write(succeses/numberOftries*100+"%");
+
+			function gameWin(){
+				//setup prices
+				var doors = [false,false,false];
+				var index = Math.round(Math.random()*(doors.length-1));
+				doors[index] = true;
+				//player chooses random door
+				var firstTarget = Math.round(Math.random()*(doors.length-1));
+				//Presentor opens a door witch doesn't have a price
+				var opened = bustDoor(firstTarget,doors);
+				//player changes his choice and sees if he has won
+				for (var i = 0; i < doors.length ; i++) {
+					if(i != firstTarget && i != opened){
+						return doors[i];
+					}
+				};
+			}
+
+			function bustDoor(firstTarget, doors){
+				var valid=false;
+				while (!valid){
+					var bustedDoor = Math.round(Math.random()*(doors.length-1));
+					if (bustedDoor!=firstTarget && !doors[bustedDoor]){
+						valid=true;
+						return bustedDoor;
+					} 
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
